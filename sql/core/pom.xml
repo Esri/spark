@@ -117,6 +117,10 @@
       <artifactId>parquet-hadoop</artifactId>
     </dependency>
     <dependency>
+      <groupId>org.apache.parquet</groupId>
+      <artifactId>parquet-jackson</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-servlet</artifactId>
     </dependency>
