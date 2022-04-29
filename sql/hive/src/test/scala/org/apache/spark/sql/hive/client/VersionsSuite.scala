@@ -888,7 +888,7 @@ class VersionsSuite extends SparkFunSuite with Logging {
 
         new File(dir.getAbsolutePath, tableName).mkdir()
         new File(dir.getAbsolutePath, tempTableName).mkdir()
-
+        // https://avro.apache.org/docs/1.11.0/spec.html#Logical+Types
         val avroSchema =
           """{
             |  "name": "test_record",
