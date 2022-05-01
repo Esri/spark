@@ -36,7 +36,7 @@ function echo_build_properties {
   echo revision=$(git rev-parse HEAD)
   echo branch=$(git rev-parse --abbrev-ref HEAD)
   echo date=$((Get-date).ToUniversalTime().toString("yyyy-MM-ddThh:mm:ssZ"))
-  echo url=$(git config --get remote.origin.url)
+  echo url=$((git config --get remote.origin.url) -replace '^https:(.+?)@()', 'https@')
 }
 
 echo_build_properties > $SPARK_BUILD_INFO
