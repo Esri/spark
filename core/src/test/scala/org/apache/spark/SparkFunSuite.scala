@@ -230,17 +230,13 @@ abstract class SparkFunSuite
       throw new SparkException(s"Cannot get any logger to add the appender")
     }
     val restoreLevels = loggers.map(_.getLevel)
-    loggers.foreach { logger =>
-      logger match {
-        case logger: Logger =>
-          logger.addAppender(appender)
-          appender.start()
-          if (level.isDefined) {
-            logger.setLevel(level.get)
-            logger.get().setLevel(level.get)
-          }
-        case _ =>
-          throw new SparkException(s"Cannot add appender to logger ${logger.getName}")
+    loggers.foreach { l =>
+      val logger = l.asInstanceOf[Logger]
+      logger.addAppender(appender)
+      appender.start()
+      if (level.isDefined) {
+        logger.setLevel(level.get)
+        logger.get().setLevel(level.get)
       }
     }
     try f finally {
@@ -260,14 +256,15 @@ abstract class SparkFunSuite
     val loggingEvents = new ArrayBuffer[LogEvent]()
     private var _threshold: Level = Level.INFO
 
-    override def append(loggingEvent: LogEvent): Unit = {
-      if (loggingEvent.getLevel.isMoreSpecificThan(_threshold)) {
+    override def append(loggingEvent: LogEvent): Unit = loggingEvent.synchronized {
+      val copyEvent = loggingEvent.toImmutable
+      if (copyEvent.getLevel.isMoreSpecificThan(_threshold)) {
         if (loggingEvents.size >= maxEvents) {
           val loggingInfo = if (msg == "") "." else s" while logging $msg."
           throw new IllegalStateException(
             s"Number of events reached the limit of $maxEvents$loggingInfo")
         }
-        loggingEvents.append(loggingEvent)
+        loggingEvents.append(copyEvent)
       }
     }
 
