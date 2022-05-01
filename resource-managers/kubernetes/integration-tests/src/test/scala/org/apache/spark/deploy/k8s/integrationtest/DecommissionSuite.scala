@@ -16,6 +16,11 @@
  */
 package org.apache.spark.deploy.k8s.integrationtest
 
+import java.io.File
+import java.nio.charset.StandardCharsets
+
+import com.google.common.io.Files
+
 import org.scalatest.concurrent.PatienceConfiguration
 import org.scalatest.time.Minutes
 import org.scalatest.time.Span
