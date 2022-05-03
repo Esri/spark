@@ -2467,7 +2467,7 @@
         <groupId>org.apache.parquet</groupId>
         <artifactId>parquet-jackson</artifactId>
         <version>${parquet.jackson.version}</version>
-        <scope>${parquet.test.deps.scope}</scope>
+        <scope>${parquet.deps.scope}</scope>
       </dependency>
       <dependency>
         <groupId>org.codehaus.janino</groupId>
