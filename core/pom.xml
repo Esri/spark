@@ -543,6 +543,24 @@
           <execution>
             <phase>generate-resources</phase>
             <configuration>
+              <!-- Detect what OS is building. -->
+              <target>
+                <condition property="isWindows">
+                  <os family="windows" />
+                </condition>
+                <condition property="isUnix">
+                  <os family="unix" />
+                </condition>
+              </target>
+              <exportAntProperties>true</exportAntProperties>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+          <execution>
+            <phase>generate-resources</phase>
+            <configuration>
               <!-- Execute the shell script to generate the spark build information. -->
               <target>
                 <exec executable="bash">
@@ -550,12 +568,27 @@
                   <arg value="${project.build.directory}/extra-resources"/>
                   <arg value="${project.version}"/>
                 </exec>
+              </target>
+              <exportAntProperties>true</exportAntProperties>
+              <skip>${isWindows}</skip>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+          <execution>
+            <phase>generate-resources</phase>
+            <configuration>
+              <!-- Execute the powershell script to generate the spark build information. -->
+              <target>
                 <exec executable="powershell.exe">
                   <arg value="${project.basedir}/../build/spark-build-info.ps1"/>
                   <arg value="${project.build.directory}/extra-resources"/>
                   <arg value="${project.version}"/>
                 </exec>
               </target>
+              <exportAntProperties>true</exportAntProperties>
+              <skip>${isUnix}</skip>
             </configuration>
             <goals>
               <goal>run</goal>
