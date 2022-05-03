@@ -542,6 +542,7 @@
         <executions>
           <execution>
             <phase>generate-resources</phase>
+            <id>build-info-detect-os</id>
             <configuration>
               <!-- Detect what OS is building. -->
               <target>
@@ -560,6 +561,7 @@
           </execution>
           <execution>
             <phase>generate-resources</phase>
+            <id>build-info-linux</id>
             <configuration>
               <!-- Execute the shell script to generate the spark build information. -->
               <target>
@@ -578,6 +580,7 @@
           </execution>
           <execution>
             <phase>generate-resources</phase>
+            <id>build-info-windows</id>
             <configuration>
               <!-- Execute the powershell script to generate the spark build information. -->
               <target>
