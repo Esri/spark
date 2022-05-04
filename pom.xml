@@ -734,11 +734,11 @@
         <exclusions>
           <exclusion>
             <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
+            <artifactId>log4j-core</artifactId>
           </exclusion>
           <exclusion>
             <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
+            <artifactId>log4j-api</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -753,6 +753,12 @@
         <artifactId>log4j-core</artifactId>
         <version>${log4j.version}</version>
         <classifier>patched</classifier>
+        <exclusions>
+          <exclusion>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
       <dependency>
         <!-- API bridge between log4j 1 and 2 -->
@@ -761,9 +767,18 @@
         <version>${log4j.version}</version>
         <classifier>patched</classifier>
         <scope>${hadoop.deps.scope}</scope>
+        <exclusions>
+          <exclusion>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
-
-      <!-- end -->
+      <!-- end of log4j-->
 
       <dependency>
         <groupId>com.ning</groupId>
