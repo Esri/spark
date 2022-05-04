@@ -54,7 +54,7 @@
     <dependency>
       <groupId>${leveldbjni.group}</groupId>
       <artifactId>leveldbjni-all</artifactId>
-      <version>1.8</version>
+      <version>${leveldbjni.version}</version>
     </dependency>
 
     <dependency>
