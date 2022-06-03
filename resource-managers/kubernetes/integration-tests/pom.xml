@@ -20,7 +20,7 @@
   <parent>
     <groupId>org.apache.spark</groupId>
     <artifactId>spark-parent_2.12</artifactId>
-    <version>3.2.1</version>
+    <version>3.2.1-esri-1</version>
     <relativePath>../../../pom.xml</relativePath>
   </parent>
 
@@ -141,7 +141,7 @@
           <argLine>-ea -Xmx4g -XX:ReservedCodeCacheSize=1g ${extraScalaTestArgs}</argLine>
           <stderr/>
           <systemProperties>
-            <log4j.configuration>file:src/test/resources/log4j.properties</log4j.configuration>
+            <log4j.configurationFile>file:src/test/resources/log4j2.properties</log4j.configurationFile>
             <java.awt.headless>true</java.awt.headless>
             <spark.kubernetes.test.imageTagFile>${spark.kubernetes.test.imageTagFile}</spark.kubernetes.test.imageTagFile>
             <spark.kubernetes.test.unpackSparkDir>${spark.kubernetes.test.unpackSparkDir}</spark.kubernetes.test.unpackSparkDir>

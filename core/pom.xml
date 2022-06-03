@@ -21,7 +21,7 @@
   <parent>
     <groupId>org.apache.spark</groupId>
     <artifactId>spark-parent_2.12</artifactId>
-    <version>3.2.1</version>
+    <version>3.2.1-esri-1</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -213,13 +213,25 @@
       <artifactId>jcl-over-slf4j</artifactId>
     </dependency>
     <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <classifier>patched</classifier>
     </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <classifier>patched</classifier>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-1.2-api</artifactId>
+      <classifier>patched</classifier>
+    </dependency>
+
     <dependency>
       <groupId>com.ning</groupId>
       <artifactId>compress-lzf</artifactId>
@@ -533,6 +545,26 @@
         <executions>
           <execution>
             <phase>generate-resources</phase>
+            <id>build-info-detect-os</id>
+            <configuration>
+              <!-- Detect what OS is building. -->
+              <target>
+                <condition property="isWindows">
+                  <os family="windows" />
+                </condition>
+                <condition property="isUnix">
+                  <os family="unix" />
+                </condition>
+              </target>
+              <exportAntProperties>true</exportAntProperties>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+          <execution>
+            <phase>generate-resources</phase>
+            <id>build-info-linux</id>
             <configuration>
               <!-- Execute the shell script to generate the spark build information. -->
               <target>
@@ -542,6 +574,27 @@
                   <arg value="${project.version}"/>
                 </exec>
               </target>
+              <exportAntProperties>true</exportAntProperties>
+              <skip>${isWindows}</skip>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+          <execution>
+            <phase>generate-resources</phase>
+            <id>build-info-windows</id>
+            <configuration>
+              <!-- Execute the powershell script to generate the spark build information. -->
+              <target>
+                <exec executable="powershell.exe">
+                  <arg value="${project.basedir}/../build/spark-build-info.ps1"/>
+                  <arg value="${project.build.directory}/extra-resources"/>
+                  <arg value="${project.version}"/>
+                </exec>
+              </target>
+              <exportAntProperties>true</exportAntProperties>
+              <skip>${isUnix}</skip>
             </configuration>
             <goals>
               <goal>run</goal>

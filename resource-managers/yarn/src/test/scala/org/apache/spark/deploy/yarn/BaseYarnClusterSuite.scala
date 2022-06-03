@@ -47,15 +47,21 @@ abstract class BaseYarnClusterSuite
   // log4j configuration for the YARN containers, so that their output is collected
   // by YARN instead of trying to overwrite unit-tests.log.
   protected val LOG4J_CONF = """
-    |log4j.rootCategory=DEBUG, console
-    |log4j.appender.console=org.apache.log4j.ConsoleAppender
-    |log4j.appender.console.target=System.err
-    |log4j.appender.console.layout=org.apache.log4j.PatternLayout
-    |log4j.appender.console.layout.ConversionPattern=%d{yy/MM/dd HH:mm:ss} %p %c{1}: %m%n
-    |log4j.logger.org.apache.hadoop=WARN
-    |log4j.logger.org.eclipse.jetty=WARN
-    |log4j.logger.org.mortbay=WARN
-    |log4j.logger.org.sparkproject.jetty=WARN
+                               |rootLogger.level = debug
+                               |rootLogger.appenderRef.stdout.ref = console
+                               |appender.console.type = Console
+                               |appender.console.name = console
+                               |appender.console.target = SYSTEM_ERR
+                               |appender.console.layout.type = PatternLayout
+                               |appender.console.layout.pattern = %d{yy/MM/dd HH:mm:ss} %p %c{1}: %m%n
+                               |logger.jetty.name = org.sparkproject.jetty
+                               |logger.jetty.level = warn
+                               |logger.eclipse.name = org.eclipse.jetty
+                               |logger.eclipse.level = warn
+                               |logger.hadoop.name = org.apache.hadoop
+                               |logger.hadoop.level = warn
+                               |logger.mortbay.name = org.mortbay
+                               |logger.mortbay.level = warn
     """.stripMargin
 
   private var yarnCluster: MiniYARNCluster = _
@@ -81,7 +87,7 @@ abstract class BaseYarnClusterSuite
     logConfDir = new File(tempDir, "log4j")
     logConfDir.mkdir()
 
-    val logConfFile = new File(logConfDir, "log4j.properties")
+    val logConfFile = new File(logConfDir, "log4j2.properties")
     Files.write(LOG4J_CONF, logConfFile, StandardCharsets.UTF_8)
 
     // Disable the disk utilization check to avoid the test hanging when people's disks are
