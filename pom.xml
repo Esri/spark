@@ -289,6 +289,10 @@
     <!-- Needed for consistent times -->
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss z</maven.build.timestamp.format>
 
+    <!-- CVE patched dependencies -->
+    <htrace.core4.version>4.3.0-incubating-SNAPSHOT-esri-1</htrace.core4.version>
+    <!-- End of CVE patched dependencies -->
+
     <!-- SPARK-36796 for JDK-17 test-->
     <extraJavaTestArgs>
       -XX:+IgnoreUnrecognizedVMOptions
@@ -2724,6 +2728,13 @@
         <artifactId>arpack</artifactId>
         <version>${netlib.ludovic.dev.version}</version>
       </dependency>
+      <!-- CVE patched dependencies -->
+      <dependency>
+        <groupId>org.apache.htrace</groupId>
+        <artifactId>htrace-core4</artifactId>
+        <version>${htrace.core4.version}</version>
+      </dependency>
+      <!-- End of CVE patched dependencies -->
     </dependencies>
   </dependencyManagement>
 
