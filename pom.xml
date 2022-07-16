@@ -294,6 +294,7 @@
     <parquet.jackson.version>1.12.2-esri-1</parquet.jackson.version>
     <hadoop.client.version>3.2.3-esri-2</hadoop.client.version>
     <rocksdbjni.version>7.3.1-esri-1</rocksdbjni.version>
+    <leveldbjni.version>1.8-esri-1</leveldbjni.version>
     <!-- End of CVE patched dependencies -->
 
     <!-- SPARK-36796 for JDK-17 test-->
@@ -694,7 +695,7 @@
       <dependency>
         <groupId>${leveldbjni.group}</groupId>
         <artifactId>leveldbjni-all</artifactId>
-        <version>1.8</version>
+        <version>${leveldbjni.version}</version>
       </dependency>
       <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
@@ -3712,6 +3713,7 @@
       <id>aarch64</id>
       <properties>
         <leveldbjni.group>org.openlabtesting.leveldbjni</leveldbjni.group>
+        <leveldbjni.version>1.8</leveldbjni.version>
       </properties>
       <activation>
         <os>
