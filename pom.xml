@@ -359,7 +359,7 @@
       </snapshots>
       <id>Atlassian-3rd-Party</id>
       <name>Atlassian-3rd-Party</name>
-      <url>http://packages.atlassian.com/maven-3rdparty/</url>
+      <url>https://packages.atlassian.com/maven-3rdparty/</url>
     </repository>
   </repositories>
   <pluginRepositories>
