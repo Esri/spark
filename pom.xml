@@ -293,7 +293,7 @@
     <htrace.core4.version>4.3.0-incubating-SNAPSHOT-esri-1</htrace.core4.version>
     <parquet.jackson.version>1.12.2-esri-1</parquet.jackson.version>
     <hadoop.client.version>3.2.3-esri-2</hadoop.client.version>
-    <rocksdbjni.version>7.3.1-esri-1</rocksdbjni.version>
+    <rocksdbjni.version>7.4.3-esri-1</rocksdbjni.version>
     <leveldbjni.version>1.8-esri-1</leveldbjni.version>
     <!--
       Addresses CVE-2022-25647
