@@ -131,7 +131,7 @@
     <kafka.version>2.8.1</kafka.version>
     <!-- After 10.15.1.3, the minimum required version is JDK9 -->
     <derby.version>10.14.2.0</derby.version>
-    <parquet.version>1.12.2</parquet.version>
+    <parquet.version>1.12.3</parquet.version>
     <orc.version>1.7.4</orc.version>
     <jetty.version>9.4.48.v20220622</jetty.version>
     <jakartaservlet.version>4.0.3</jakartaservlet.version>
@@ -291,7 +291,7 @@
 
     <!-- CVE patched dependencies -->
     <htrace.core4.version>4.3.0-incubating-SNAPSHOT-esri-1</htrace.core4.version>
-    <parquet.jackson.version>1.12.2-esri-1</parquet.jackson.version>
+    <parquet.jackson.version>1.12.3-esri-1</parquet.jackson.version>
     <hadoop.client.version>3.2.4-esri-2</hadoop.client.version>
     <rocksdbjni.version>7.4.3-esri-1</rocksdbjni.version>
     <leveldbjni.version>1.8-esri-1</leveldbjni.version>
@@ -2336,7 +2336,7 @@
             <groupId>${hive.group}</groupId>
             <artifactId>hive-service-rpc</artifactId>
           </exclusion>
-          <!-- parquet-hadoop-bundle:1.8.1 conflict with 1.12.0 -->
+          <!-- parquet-hadoop-bundle:1.8.1 conflict with 1.12.3 -->
           <exclusion>
             <groupId>org.apache.parquet</groupId>
             <artifactId>parquet-hadoop-bundle</artifactId>
