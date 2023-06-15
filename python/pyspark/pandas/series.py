@@ -5447,14 +5447,14 @@ class Series(Frame, IndexOpsMixin, Generic[T]):
         """
         return self.head(2)._to_internal_pandas().item()
 
-    def iteritems(self) -> Iterable[Tuple[Name, Any]]:
+    def items(self) -> Iterable[Tuple[Name, Any]]:
         """
         Lazily iterate over (index, value) tuples.
 
         This method returns an iterable tuple (index, value). This is
         convenient if you want to create a lazy iterator.
 
-        .. note:: Unlike pandas', the iteritems in pandas-on-Spark returns generator rather
+        .. note:: Unlike pandas', the items in pandas-on-Spark returns generator rather
             zip object
 
         Returns
@@ -5494,9 +5494,15 @@ class Series(Frame, IndexOpsMixin, Generic[T]):
         ):
             yield k, v
 
-    def items(self) -> Iterable[Tuple[Name, Any]]:
-        """This is an alias of ``iteritems``."""
-        return self.iteritems()
+    def iteritems(self) -> Iterable[Tuple[Name, Any]]:
+        """
+        This is an alias of ``items``.
+        .. deprecated:: 3.4.0
+            iteritems is deprecated and will be removed in a future version.
+            Use .items instead.
+        """
+        warnings.warn("Deprecated in 3.4, Use Series.items instead.", FutureWarning)
+        return self.items()
 
     def droplevel(self, level: Union[int, Name, List[Union[int, Name]]]) -> "Series":
         """
