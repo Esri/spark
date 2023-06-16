@@ -1305,7 +1305,7 @@ class DataFrame(Frame, Generic[T]):
         """
         return cast(DataFrame, ps.from_pandas(corr(self, method)))
 
-    def iteritems(self) -> Iterator[Tuple[Name, "Series"]]:
+    def items(self) -> Iterator[Tuple[Name, "Series"]]:
         """
         Iterator over (column name, Series) pairs.
 
@@ -1331,7 +1331,7 @@ class DataFrame(Frame, Generic[T]):
         polar       bear       22000
         koala  marsupial       80000
 
-        >>> for label, content in df.iteritems():
+        >>> for label, content in df.items():
         ...    print('label:', label)
         ...    print('content:', content.to_string())
         ...
@@ -1509,9 +1509,15 @@ class DataFrame(Frame, Generic[T]):
             ):
                 yield tuple(([k] if index else []) + list(v))
 
-    def items(self) -> Iterator[Tuple[Name, "Series"]]:
-        """This is an alias of ``iteritems``."""
-        return self.iteritems()
+    def iteritems(self) -> Iterator[Tuple[Name, "Series"]]:
+        """
+        This is an alias of ``items``.
+        .. deprecated:: 3.3.0-esri-7
+            iteritems is deprecated and will be removed in a future version.
+            Use .items instead.
+        """
+        warnings.warn("Deprecated in 3.3.0-esri-7, Use DataFrame.items instead.", FutureWarning)
+        return self.items()
 
     def to_clipboard(self, excel: bool = True, sep: Optional[str] = None, **kwargs: Any) -> None:
         """
