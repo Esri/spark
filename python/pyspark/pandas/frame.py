@@ -1512,11 +1512,11 @@ class DataFrame(Frame, Generic[T]):
     def iteritems(self) -> Iterator[Tuple[Name, "Series"]]:
         """
         This is an alias of ``items``.
-        .. deprecated:: 3.4.0
+        .. deprecated:: 3.3.0-esri-7
             iteritems is deprecated and will be removed in a future version.
             Use .items instead.
         """
-        warnings.warn("Deprecated in 3.4.0, Use DataFrame.items instead.", FutureWarning)
+        warnings.warn("Deprecated in 3.3.0-esri-7, Use DataFrame.items instead.", FutureWarning)
         return self.items()
 
     def to_clipboard(self, excel: bool = True, sep: Optional[str] = None, **kwargs: Any) -> None:
