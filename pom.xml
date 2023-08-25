@@ -354,6 +354,17 @@
         <enabled>false</enabled>
       </snapshots>
     </repository>
+    <!--
+      This is used to grab dependencies from Atlassian.
+    -->
+    <repository>
+      <id>Atlassian-3rd-Party</id>
+      <name>Atlassian-3rd-Party</name>
+      <url>https://packages.atlassian.com/maven-3rdparty/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
