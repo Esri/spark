@@ -307,6 +307,7 @@
 
     <!-- CVE patched dependencies -->
     <parquet.jackson.version>1.12.3-esri-1</parquet.jackson.version>
+    <rocksdbjni.version>8.3.2-esri-1</rocksdbjni.version>
     <!-- End of CVE patched dependencies -->
 
     <!-- SPARK-36796 for JDK-17 test-->
@@ -703,7 +704,7 @@
       <dependency>
         <groupId>org.rocksdb</groupId>
         <artifactId>rocksdbjni</artifactId>
-        <version>7.9.2</version>
+        <version>${rocksdbjni.version}</version>
       </dependency>
       <dependency>
         <groupId>${leveldbjni.group}</groupId>
