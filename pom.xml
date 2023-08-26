@@ -305,6 +305,10 @@
     <!-- Needed for consistent times -->
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss z</maven.build.timestamp.format>
 
+    <!-- CVE patched dependencies -->
+    <parquet.jackson.version>1.12.3-esri-1</parquet.jackson.version>
+    <!-- End of CVE patched dependencies -->
+
     <!-- SPARK-36796 for JDK-17 test-->
     <extraJavaTestArgs>
       -XX:+IgnoreUnrecognizedVMOptions
@@ -2636,6 +2640,12 @@
         <artifactId>parquet-avro</artifactId>
         <version>${parquet.version}</version>
         <scope>${parquet.test.deps.scope}</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.parquet</groupId>
+        <artifactId>parquet-jackson</artifactId>
+        <version>${parquet.jackson.version}</version>
+        <scope>${parquet.deps.scope}</scope>
       </dependency>
       <dependency>
         <groupId>org.codehaus.janino</groupId>
