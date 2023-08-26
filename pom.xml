@@ -306,6 +306,7 @@
     <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss z</maven.build.timestamp.format>
 
     <!-- CVE patched dependencies -->
+    <leveldbjni.version>1.8-esri-1</leveldbjni.version>
     <parquet.jackson.version>1.12.3-esri-1</parquet.jackson.version>
     <rocksdbjni.version>8.3.2-esri-1</rocksdbjni.version>
     <!-- End of CVE patched dependencies -->
@@ -709,7 +710,7 @@
       <dependency>
         <groupId>${leveldbjni.group}</groupId>
         <artifactId>leveldbjni-all</artifactId>
-        <version>1.8</version>
+        <version>${leveldbjni.version}</version>
       </dependency>
       <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
@@ -3769,6 +3770,7 @@
       <id>aarch64</id>
       <properties>
         <leveldbjni.group>org.openlabtesting.leveldbjni</leveldbjni.group>
+        <leveldbjni.version>1.8</leveldbjni.version>
       </properties>
       <activation>
         <os>
