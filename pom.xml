@@ -314,6 +314,7 @@
     <leveldbjni.version>1.8-esri-1</leveldbjni.version>
     <parquet.jackson.version>1.12.3-esri-1</parquet.jackson.version>
     <rocksdbjni.version>8.3.2-esri-1</rocksdbjni.version>
+    <snakeyaml.version>1.33-esri-1</snakeyaml.version>
     <!-- End of CVE patched dependencies -->
 
     <!-- SPARK-36796 for JDK-17 test-->
@@ -2802,6 +2803,13 @@
         <artifactId>gson</artifactId>
         <version>${gson.version}</version>
       </dependency>
+      <!-- CVE patched dependencies -->
+      <dependency>
+        <groupId>org.yaml</groupId>
+        <artifactId>snakeyaml</artifactId>
+        <version>${snakeyaml.version}</version>
+      </dependency>
+      <!-- End of CVE patched dependencies -->
     </dependencies>
   </dependencyManagement>
 
