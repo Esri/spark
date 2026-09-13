@@ -130,6 +130,7 @@
     <log4j.version>2.26.1</log4j.version>
     <!-- make sure to update IsolatedClientLoader whenever this version is changed -->
     <hadoop.version>3.5.0</hadoop.version>
+    <hadoop.client.version>3.5.0-esri-1</hadoop.client.version>
     <!-- SPARK-41247: When updating `protobuf.version`, also need to update `protoVersion` in `SparkBuild.scala` -->
     <protobuf.version>4.33.5</protobuf.version>
     <protoc-jar-maven-plugin.version>3.11.4</protoc-jar-maven-plugin.version>
@@ -1476,13 +1477,13 @@
       <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-client-api</artifactId>
-        <version>${hadoop.version}</version>
+        <version>${hadoop.client.version}</version>
         <scope>${hadoop.deps.scope}</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.hadoop</groupId>
         <artifactId>hadoop-client-runtime</artifactId>
-        <version>${hadoop.version}</version>
+        <version>${hadoop.client.version}</version>
         <scope>${hadoop.deps.scope}</scope>
         <exclusions>
           <exclusion>
